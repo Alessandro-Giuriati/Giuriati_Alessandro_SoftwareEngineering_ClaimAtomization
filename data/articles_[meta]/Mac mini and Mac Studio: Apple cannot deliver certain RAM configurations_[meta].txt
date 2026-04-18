@@ -2,4 +2,5 @@ Title: Mac mini and Mac Studio: Apple cannot deliver certain RAM configurations
 Author: Ben Schwan
 Source: heise online
 Date: 13 April 2026
-Reference: Schwan, B. (2026) 'Mac mini and Mac Studio: Apple cannot deliver certain RAM configurations', heise online, 13 April. Available at: https://www.heise.de/en/news/Mac-mini-and-Mac-Studio-Apple-cannot-deliver-certain-RAM-configurations-11254312.html (Accessed: 16 April 2026).
+URL: https://www.heise.de/en/news/Mac-mini-and-Mac-Studio-Apple-cannot-deliver-certain-RAM-configurations-11254312.html
+Harvard style Reference: Schwan, B. (2026) 'Mac mini and Mac Studio: Apple cannot deliver certain RAM configurations', heise online, 13 April. Available at: https://www.heise.de/en/news/Mac-mini-and-Mac-Studio-Apple-cannot-deliver-certain-RAM-configurations-11254312.html (Accessed: 16 April 2026).
