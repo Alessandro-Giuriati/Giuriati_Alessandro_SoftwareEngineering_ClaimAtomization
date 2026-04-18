@@ -1,4 +1,6 @@
+import os
 import re
+
 from openai import OpenAI
 
 
@@ -11,8 +13,22 @@ def extract_claims(article_text: str) -> list[str]:
 
     Returns:
         A list of atomic claims in their original order.
+
+    Raises:
+        ValueError: If the article text is empty or if no valid claims are returned.
+        RuntimeError: If the API key is missing or the API request fails.
     """
-    client = OpenAI()
+    if not article_text.strip():
+        raise ValueError("Article text is empty. Cannot extract claims.")
+
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError(
+            "OpenAI API key not found. Please set the OPENAI_API_KEY "
+            "environment variable."
+        )
+
+    client = OpenAI(api_key=api_key)
 
     system_prompt = """
 You are an expert assistant for claim atomization.
@@ -46,17 +62,22 @@ Article:
 \"\"\"
 """
 
-    response = client.responses.create(
-        model="gpt-5.4-mini",
-        input=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
-    )
+    try:
+        response = client.responses.create(
+            model="gpt-5.4-mini",
+            input=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+        )
+    except Exception as exc:
+        raise RuntimeError(
+            f"OpenAI API request failed: {exc}"
+        ) from exc
 
     content = response.output_text
 
-    if not content.strip():
+    if not content or not content.strip():
         raise ValueError("The model returned no textual content.")
 
     raw_lines = content.splitlines()
@@ -73,5 +94,8 @@ Article:
 
         if cleaned_line:
             claims.append(cleaned_line)
+
+    if not claims:
+        raise ValueError("The model returned no valid claims after cleaning.")
 
     return claims
