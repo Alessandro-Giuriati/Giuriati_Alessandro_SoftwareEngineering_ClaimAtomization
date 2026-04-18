@@ -1,3 +1,5 @@
+import sys
+
 from claim_atomization.input_handler import load_article_text
 from claim_atomization.text_preprocessor import preprocess_text
 from claim_atomization.claim_extractor import extract_claims
@@ -5,11 +7,11 @@ from claim_atomization.output_handler import build_output_path, save_claims_to_t
 
 
 def main() -> None:
-    article_path = (
-        "data/articles/"
-        "Mac mini and Mac Studio: Apple cannot deliver certain RAM "
-        "configurations.txt"
-    )
+    if len(sys.argv) != 2:
+        print("Usage: PYTHONPATH=src python src/claim_atomization/main.py 'article_path'")
+        sys.exit(1)
+
+    article_path = sys.argv[1]
 
     article_text = load_article_text(article_path)
     cleaned_text = preprocess_text(article_text)
