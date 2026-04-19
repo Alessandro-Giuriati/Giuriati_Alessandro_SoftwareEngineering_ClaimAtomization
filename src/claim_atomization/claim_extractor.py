@@ -31,36 +31,78 @@ def extract_claims(article_text: str) -> list[str]:
     client = OpenAI(api_key=api_key)
 
     system_prompt = """
-You are an expert assistant for claim atomization.
+    You are an expert assistant for claim atomization.
 
-Your task is to convert a news article into an ordered list of atomic factual claims.
+    Your task is to convert one article into an ordered list of atomic factual claims.
 
-Rules:
-- Preserve the original order of information as much as possible.
-- Each line must contain exactly one atomic factual claim.
-- Split complex sentences into smaller factual units when appropriate.
-- Express each claim directly as a fact.
-- Do not use meta-commentary such as "the article states", "the article says", or similar.
-- Keep attribution when it is part of the meaning.
-- Keep uncertainty or speculation explicit when present in the source.
-- Exclude advice, shopping suggestions, reader guidance, and non-central editorial content.
-- Do not generalize beyond the specific product, configuration, actor, date, or event mentioned in the text.
-- Do not summarise.
-- Do not merge multiple facts into one claim.
-- Do not invent facts.
-- Do not add explanations or commentary.
-- Do not number the claims.
-- Output only the claims, one per line.
-"""
+    Goal:
+    Extract the minimum set of non-redundant atomic claims needed to preserve the article's central factual content.
+    Granularity must be proportional to the article's informational depth, not artificially inflated.
+
+    Definition of a valid claim:
+    - A claim is one self-contained factual proposition.
+    - It must be specific enough to stand on its own.
+    - It must remain faithful to the source text.
+    - If uncertainty, attribution, or speculation is present in the source, preserve it explicitly.
+
+    Core rules:
+    1. Preserve the original order of information as much as possible.
+    2. Each line must contain exactly one atomic factual claim.
+    3. Split only when a sentence truly contains more than one distinct factual proposition.
+    4. Do not create separate claims for stylistic emphasis, paraphrases, or near-duplicates.
+    5. If the same fact is repeated in different wording, keep it only once.
+    6. Prefer the smallest non-redundant set of claims that preserves the article's main factual content.
+    7. Do not generalize beyond the source text.
+    8. Do not invent facts.
+    9. Do not explain, comment, summarize, or evaluate.
+
+    What to exclude:
+    - Pure opinions, impressions, praise, criticism, or subjective review language unless explicitly attributed and relevant.
+    - Rhetorical language, metaphors, hype, or descriptive flourish.
+    - Shopping advice, reader guidance, or promotional suggestions.
+    - Minor descriptive details that do not materially affect the article's factual content.
+    - Repeated restatements of the same fact.
+
+    What to keep:
+    - Concrete events, releases, dates, prices, quantities, configurations, technical facts, availability facts, defects, and other verifiable statements.
+    - Explicitly attributed judgments only when they are themselves relevant reported content.
+    - Reported statements by named people if they add distinct factual content.
+    - Comparisons or contrasts only when they express a concrete fact.
+
+    Special handling:
+    - For review-like or opinion-heavy articles, keep only the central factual information and explicitly attributed relevant testimony.
+    - Do not convert every sentence of a review into a claim.
+    - Do not turn subjective driving impressions, praise, or criticism into standalone claims unless they are clearly reported opinions from a named source and relevant to the article.
+
+    Output rules:
+    - Output only the claims.
+    - One claim per line.
+    - No numbering.
+    - No bullets.
+    - No headings.
+
+    Before producing the final answer, silently check each claim:
+    - Is it factual?
+    - Is it atomic?
+    - Is it non-redundant?
+    - Is it central enough to keep?
+    If the answer is no, do not output it.
+    """
 
     user_prompt = f"""
-Extract atomic factual claims from the following news article.
+    Extract an ordered list of atomic factual claims from the following article.
 
-Article:
-\"\"\"
-{article_text}
-\"\"\"
-"""
+    Important:
+    - Keep only central, non-redundant factual content.
+    - Exclude opinions, stylistic phrasing, promotional or shopping advice, and repeated restatements.
+    - For review-like passages, keep only concrete factual statements and clearly relevant attributed testimony.
+    - Use the minimum number of claims needed to preserve the article's core factual structure.
+
+    Article:
+    \"\"\"
+    {article_text}
+    \"\"\"
+    """
 
     try:
         response = client.responses.create(
