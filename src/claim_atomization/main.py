@@ -18,9 +18,14 @@ from claim_atomization.metadata_handler import (
 DEFAULT_ARTICLES_DIR = "data/articles"
 
 
-def process_article(article_path: str) -> None:
+def process_article(article_path: str) -> tuple[int, str]:
     """
     Run the full claim atomization pipeline for a single article.
+
+    Returns:
+        A tuple containing:
+        - the total number of extracted claims
+        - the saved output path
     """
     article_text = load_article_text(article_path)
     cleaned_text = preprocess_text(article_text)
@@ -37,19 +42,24 @@ def process_article(article_path: str) -> None:
     output_path = build_output_path(article_path)
     save_claims_to_txt(claims, output_path, source_reference=source_reference)
 
+    return len(claims), output_path
+
+
+def print_article_summary(article_path: str, claim_count: int, output_path: str) -> None:
+    """
+    Print a compact terminal summary for a processed article.
+    """
     print(f"\nProcessing article: {Path(article_path).name}\n")
-    print("Extracted claims:\n")
+    print(f"Total claims extracted: {claim_count}\n")
+    print(f"Claims saved to: {output_path}\n")
 
-    for index, claim in enumerate(claims, start=1):
-        print(f"{index}. {claim}")
 
-    print(f"\nTotal claims extracted: {len(claims)}")
-
-    if source_reference:
-        print("\nSource reference:")
-        print(source_reference)
-
-    print(f"\nClaims saved to: {output_path}\n")
+def print_article_error(article_path: str, error_message: str) -> None:
+    """
+    Print a compact terminal error for a failed article.
+    """
+    print(f"\nProcessing article: {Path(article_path).name}\n")
+    print(f"Error: {error_message}\n")
 
 
 def prompt_article_selection(articles_dir: str = DEFAULT_ARTICLES_DIR) -> list[str]:
@@ -87,12 +97,23 @@ def main() -> None:
                 "'article_path'"
             )
             sys.exit(1)
-
-        for article_path in selected_article_paths:
-            process_article(article_path)
-
-    except (FileNotFoundError, ValueError, RuntimeError) as exc:
+    except (FileNotFoundError, ValueError) as exc:
         print(f"Error: {exc}")
+        sys.exit(1)
+
+    success_count = 0
+    failure_count = 0
+
+    for article_path in selected_article_paths:
+        try:
+            claim_count, output_path = process_article(article_path)
+            print_article_summary(article_path, claim_count, output_path)
+            success_count += 1
+        except (FileNotFoundError, ValueError, RuntimeError) as exc:
+            print_article_error(article_path, str(exc))
+            failure_count += 1
+
+    if failure_count > 0 and success_count == 0:
         sys.exit(1)
 
 

@@ -1,71 +1,47 @@
 Extracted claims:
 
-1. The BMW M3 helped bring high-performance rear-wheel-drive cars into the mainstream.
-2. The E90-generation BMW M3 was sold from 2007 to 2013.
-3. The E90-generation M3 used a V8 engine.
-4. The E90-generation M3 was offered with three body styles and two gearboxes.
-5. The E90-generation M3 can now be bought for less than £20,000.
-6. The fourth-generation M3’s move from six to eight cylinders pushed its price above £50,000.
-7. The E90-generation M3 had a 414bhp 4.0-litre naturally aspirated V8 engine.
-8. It was available with a six-speed manual gearbox or an optional seven-speed DCT twin-clutch transmission.
-9. The E90-generation M3 could do 0-60mph in under five seconds, 0-100mph in ten seconds, and had a 155mph limited top speed.
-10. The E92 coupe launched first, followed by the E93 folding hard-top cabrio and the E90 four-door saloon.
-11. Coupes accounted for two-thirds of the 8,262 M3s sold in the UK.
-12. The coupe weighed 1,655kg.
-13. The convertible weighed 150kg more than the coupe.
-14. The E90 saloon came to the UK in a total of 625 examples.
-15. The E90 M3 used a “power dome” bonnet, M-badged side vents, bulging wheel arches, quad exhaust pipes, and a more intricate front bumper than a standard 3 Series.
-16. Inside, the M3 had an M-branded gear knob or DCT selector, bespoke dials with a light-up red line, and a steering wheel button marked “M”.
-17. The M button could alter stability control, adjustable suspension firmness, and gearshift paddle response.
-18. Without the M button pressed, the M3 behaved much like a standard BMW 3 Series.
-19. The E90 M3’s hydraulic steering was more natural in its responses than the current turbocharged M3’s electronic setup.
-20. The E90 M3’s engine was naturally aspirated, while its successor and most other performance cars at that level had moved to turbocharging.
-21. The M3’s engine revved to 8,300rpm.
-22. The DCT gearbox was available with five shift settings.
-23. The DCT gearbox outsold the manual gearbox over the M3’s life.
-24. The E90 M3 is less terrifying in poor road conditions than the current M3 because it lacks the instant punch of two turbos.
-25. The engine produced 414bhp and 295lb ft to the rear axle.
-26. The dashboard layout had aged, but the interior controls remained easy to get used to.
-27. BMW specialist Munich Legends’ director Dan Norris called the E90 M3 the best all-round M Car BMW has ever made.
-28. Norris said he had driven his black M3 hard for 50,000 miles, including on track, and it had never gone wrong.
-29. A common fault is failure of the two throttle bodies.
-30. If one throttle body fails, both should be replaced together.
-31. Brand new throttle bodies are recommended over refurbished ones.
-32. Each throttle body costs £650, and replacing both costs around £1,800 including VAT.
-33. A second major issue is bottom-end engine failure.
-34. The E90 M3’s V8 is essentially a cut-down version of the contemporary M5 V10.
-35. Engine problems are more likely when the car has been revved hard from cold or poorly maintained.
-36. Engines can last beyond 100,000 miles, but neglect can require major work at 50,000 miles.
-37. The M3 uses a condition-based servicing system.
-38. The V8 typically needs an annual oil change service at around £250.
-39. A more detailed service with filters and spark plugs is needed every 40,000 to 50,000 miles and costs around £700.
-40. The car’s running-in fluids should have been changed at 1,000 miles.
-41. The DCT gearbox can leak oil.
-42. Fixing a DCT oil leak costs at least £500 if the gearbox is not removed.
-43. The exhaust downpipes can leak and the manifolds can crack, especially on modified cars or those with aftermarket exhaust work.
-44. The M3 typically returns around 18mpg when driven hard and around 30mpg when driven gently.
-45. A reasonable real-world expectation is 22-24mpg.
-46. The car uses about a litre of oil every 4,000 to 5,000 miles if driven sensibly.
-47. The correct oil is Castrol 10W-60 fully synthetic approved for BMW M Division cars.
-48. Premium tyres cost about £250 each and can last 15,000 to 20,000 miles if used carefully.
-49. The brakes are strong but not especially impressive in absolute terms, and track use would call for upgrades.
-50. Early 2007 E92 M3 coupes start at just under £17,000.
-51. At about £20,000, buyers can choose from all body styles and gearboxes.
-52. At about £25,000, buyers can find Competition Pack cars, post-facelift cars, and most examples have 50,000 miles or less.
-53. Cars near £30,000 often have very low mileage or high-spec individual colour schemes.
-54. M3 GT3 and M3 CRT models cost £120,000 or more.
-55. Richard Hodge’s E90 M3 is his third M3, after an E36 and an E46.
-56. Hodge bought his August 2010 E90 M3 in 2013.
-57. He chose the four-door version because he preferred its look, found it more discreet, and saw very few of them.
-58. He likes the naturally aspirated V8’s performance and sound.
-59. He thinks the handling is sublime and slightly better than the E92 coupe’s.
-60. He chose the DCT gearbox because it is easy in traffic and works well in manual mode.
-61. He says the car is not cheap to run, but servicing costs are reasonable.
-62. He struggles to get 20mpg in his car.
-63. He has owned the car for over three years and does not want to replace it.
-64. He thinks the latest turbocharged M3 is not as good as his car.
+1. The BMW M3 is presented as a high-performance rear-wheel-drive car that helped bring that type of car into the mainstream.
+2. The article says the M3 evolved over 31 years from a four-cylinder coupe into a turbocharged saloon and spawned multiple variants, including convertible and track-focused versions.
+3. The E90-generation M3 was sold from 2007 to 2013.
+4. The E90-generation M3 was the only M3 generation to use an eight-cylinder engine.
+5. The E90 M3 used a highly strung 4.0-litre V8 with 414bhp.
+6. The E90 M3 was offered with a six-speed manual gearbox or an optional seven-speed DCT twin-clutch transmission.
+7. The E90 M3 could do 0-60mph in under five seconds, 0-100mph in 10 seconds, and had a 155mph limited top speed.
+8. The E90-generation M3 launched as the E92 coupe, with the E93 convertible and E90 saloon arriving later.
+9. In the UK, coupes accounted for two-thirds of the 8,262 E90-generation M3s sold.
+10. The coupe was the lightest body style in this generation at 1,655kg.
+11. The saloon was sold in the UK in limited numbers, with 625 examples.
+12. The E90 M3 shared visual cues across the range including a bonnet power dome, M-badged side vents, bulging wheel arches, quad exhausts, and a more intricate front bumper than a standard 3 Series.
+13. The cabin featured an M-branded gear knob or DCT selector, bespoke dials with a light-up red line, and an M button on the steering wheel.
+14. The M button was used to store preferred driving settings such as stability control, suspension firmness, and gearshift response.
+15. Without its sport settings engaged, the M3 behaves like a normal BMW 3 Series and is refined and easy to drive.
+16. On interesting roads, the E90 M3 is sharp and precise, with hydraulic steering and strong front-end grip.
+17. The V8 engine is the standout feature of the car, and its power delivery is naturally aspirated rather than turbocharged.
+18. The engine’s sound builds from a low burble to a screaming note beyond 8,000rpm.
+19. The DCT gearbox was available on the E90 M3 and was outsold by the manual over the car’s life.
+20. The E90 M3 is less intimidating than the current twin-turbo M3, especially in poor road conditions.
+21. The car can send 414bhp and 295lb ft to the rear axle.
+22. BMW specialist Dan Norris of Munich Legends says the E90 M3 is the best all-round M car BMW has made and that his own car has covered 50,000 hard miles without going wrong.
+23. The E90 M3’s two throttle bodies are a known failure point and should be replaced if they have not already been done.
+24. If one throttle body fails, both should be replaced together, and the article says the job costs around £1,800 including VAT.
+25. The M3’s V8 can suffer bottom-end failure, especially if it is revved hard from cold or poorly maintained.
+26. Well-maintained engines can last beyond 100,000 miles, while badly treated ones may need major work at 50,000 miles.
+27. The article estimates an engine rebuild could cost about £8,000.
+28. The M3 uses a condition-based servicing system.
+29. As a guide, the V8 needs annual oil changes at about £250 and a more detailed service every 40,000 to 50,000 miles at about £700.
+30. The running-in fluids should be changed at 1,000 miles.
+31. The DCT gearbox can leak oil and the repair is said to cost at least £500.
+32. The exhaust downpipes can leak and the manifolds can crack, particularly on modified cars or those with aftermarket exhaust work.
+33. The E90 M3 typically returns about 18mpg when driven hard, around 22 to 24mpg in mixed use, and up to about 30mpg when driven gently.
+34. Premium tyres cost about £250 each and may last 15,000 to 20,000 miles if treated carefully.
+35. The article says the E90 M3 is a relatively cost-effective M car to run.
+36. Early 2007 E92 M3 coupes start at just under £17,000.
+37. At around £20,000, buyers can choose from all body styles and gearboxes.
+38. Around £25,000 buys a wider selection including Competition Pack cars and post-facelift examples.
+39. Cars near £30,000 tend to have very low mileage or high-spec individual options.
+40. The M3 GT3 and M3 CRT cost £120,000 or more.
 
-Total claims extracted: 64
+Total claims extracted: 40
 
 Source reference:
 Dobie, S. (2016) 'Top Gear's Bargain Heroes: the E90 BMW M3', Top Gear, 03 December. Available at: https://www.topgear.com/car-news/top-gears-bargain-heroes-e90-bmw-m3 (Accessed: 18 April 2026).
