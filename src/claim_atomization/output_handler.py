@@ -30,10 +30,9 @@ def format_claims_as_text(
     lines.append("")
     lines.append(f"Total claims extracted: {len(claims)}")
 
-    if source_reference:
-        lines.append("")
-        lines.append("Source reference:")
-        lines.append(source_reference)
+    lines.append("")
+    lines.append("Source reference:")
+    lines.append(source_reference if source_reference else "Not Available")
 
     return "\n".join(lines)
 

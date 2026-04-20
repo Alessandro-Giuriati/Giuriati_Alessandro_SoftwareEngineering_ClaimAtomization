@@ -82,11 +82,7 @@ def extract_year(raw_value: str | None) -> str:
     return "n.d."
 
 
-def build_harvard_reference(
-    metadata_text: str,
-    article_path: str,
-    access_date: date | None = None,
-) -> str:
+def build_harvard_reference(metadata_text: str, article_path: str, access_date: date | None = None,) -> str:
     """
     Build a Harvard-style source reference from metadata.
 
