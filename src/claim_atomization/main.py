@@ -1,3 +1,13 @@
+"""
+Main entry point for the claim atomization pipeline.
+
+Usage:
+    PYTHONPATH=src python src/claim_atomization/main.py
+    PYTHONPATH=src python -m claim_atomization.main
+"""
+
+import sys
+from pathlib import Path
 import sys
 from pathlib import Path
 
