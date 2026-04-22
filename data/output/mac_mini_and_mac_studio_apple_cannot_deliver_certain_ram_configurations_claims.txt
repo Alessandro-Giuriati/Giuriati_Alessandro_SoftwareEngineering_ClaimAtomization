@@ -1,20 +1,22 @@
 Extracted claims:
 
-1. Apple’s online store currently shows some Mac Studio and Mac mini M4 RAM configurations as “currently unavailable.”
-2. Apple has not given a reason for the unavailability.
+1. Apple currently lists some Mac Studio and Mac mini M4 RAM configurations as “currently unavailable” in its online store.
+2. Apple gives no reason for the unavailability.
 3. Observers believe the shortages are due to the current memory crisis.
-4. Apple removed the 512 GB RAM variant of the Mac Studio in March without replacement.
-5. A 32 GB Mac mini M4 is temporarily unavailable and is also not available in most retail stores.
-6. The 64 GB Mac mini M4 Pro is also unavailable.
-7. The 128 GB Mac Studio M4 Max variant is unavailable.
-8. Apple has not said when availability will improve.
-9. The article says alternative retailers may have better availability and lower prices than Apple.
-10. Apple may also be preparing new Mac mini and Mac Studio series.
-11. The article says new models are on Apple’s list.
-12. The Mac mini M4 was released in November 2024.
-13. The Mac Studio M4 Max and M3 Ultra were released in March 2025.
+4. Some device variants had previously been available only with delays.
+5. In March, Apple removed the 512 GB RAM variant of the Mac Studio without replacement.
+6. A 32 GB Mac mini M4 is temporarily unavailable.
+7. The 32 GB Mac mini M4 is also unavailable in most retail stores.
+8. The 64 GB Mac mini M4 Pro is also unavailable.
+9. The 128 GB Mac Studio M4 Max variant is also unavailable.
+10. Apple has not said when availability will improve.
+11. The article suggests alternative retailers may have better availability and lower prices.
+12. Another possible explanation is that Apple is preparing new Mac mini and Mac Studio series.
+13. Configurations for upcoming models are usually listed as delayed rather than completely unavailable.
+14. The Mac mini M4 was released in November 2024.
+15. The Mac Studio M4 Max and M3 Ultra were released in March 2025.
 
-Total claims extracted: 13
+Total claims extracted: 15
 
 Source reference:
 Schwan, B. (2026) 'Mac mini and Mac Studio: Apple cannot deliver certain RAM configurations', heise online, 13 April. Available at: https://www.heise.de/en/news/Mac-mini-and-Mac-Studio-Apple-cannot-deliver-certain-RAM-configurations-11254312.html (Accessed: 16 April 2026).
