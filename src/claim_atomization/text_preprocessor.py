@@ -3,31 +3,33 @@ import re
 
 def preprocess_text(article_text: str) -> str:
     """
-    Clean article text while preserving its meaning.
+    Clean article text while preserving its structure.
 
-    This function performs only basic normalization:
-    - removes leading and trailing whitespace
-    - normalizes line breaks
-    - removes extra spaces inside lines
-    - collapses multiple empty lines into a single empty line
+    This function performs conservative normalization:
+    - normalizes line endings
+    - removes trailing whitespace from each line
+    - preserves paragraph breaks and line structure
+    - collapses excessive blank lines into a maximum of two
+    - rejects empty input after cleaning
 
     Args:
         article_text: Raw article text.
 
     Returns:
         A cleaned version of the article text.
+
+    Raises:
+        ValueError: If the article text is empty after preprocessing.
     """
     cleaned_text = article_text.replace("\r\n", "\n").replace("\r", "\n")
-    cleaned_text = cleaned_text.strip()
 
     lines = cleaned_text.split("\n")
-    normalized_lines = []
+    normalized_lines = [line.rstrip() for line in lines]
 
-    for line in lines:
-        normalized_line = re.sub(r"\s+", " ", line).strip()
-        normalized_lines.append(normalized_line)
-
-    cleaned_text = "\n".join(normalized_lines)
+    cleaned_text = "\n".join(normalized_lines).strip()
     cleaned_text = re.sub(r"\n{3,}", "\n\n", cleaned_text)
+
+    if not cleaned_text:
+        raise ValueError("Article text is empty after preprocessing.")
 
     return cleaned_text
