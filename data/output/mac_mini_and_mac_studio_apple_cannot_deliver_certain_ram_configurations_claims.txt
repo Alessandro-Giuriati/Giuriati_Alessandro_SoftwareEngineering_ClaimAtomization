@@ -1,22 +1,21 @@
 Extracted claims:
 
-1. Apple currently lists some Mac Studio and Mac mini M4 RAM configurations as “currently unavailable” in its online store.
-2. Apple gives no reason for the unavailability.
-3. Observers believe the shortages are due to the current memory crisis.
-4. Some device variants had previously been available only with delays.
-5. In March, Apple removed the 512 GB RAM variant of the Mac Studio without replacement.
-6. A 32 GB Mac mini M4 is temporarily unavailable.
-7. The 32 GB Mac mini M4 is also unavailable in most retail stores.
-8. The 64 GB Mac mini M4 Pro is also unavailable.
-9. The 128 GB Mac Studio M4 Max variant is also unavailable.
-10. Apple has not said when availability will improve.
-11. The article suggests alternative retailers may have better availability and lower prices.
-12. Another possible explanation is that Apple is preparing new Mac mini and Mac Studio series.
-13. Configurations for upcoming models are usually listed as delayed rather than completely unavailable.
-14. The Mac mini M4 was released in November 2024.
-15. The Mac Studio M4 Max and M3 Ultra were released in March 2025.
+1. Apple currently does not list all usual RAM variants for the Mac Studio or Mac mini M4 in its online store.
+2. Some selected configurations are shown as “currently unavailable” when chosen in Apple’s online store.
+3. Apple gives no reason for the unavailability.
+4. Observers believe the shortages are due to the current memory crisis.
+5. Some device variants had already been available only with delays.
+6. Apple removed the 512 GB RAM variant of the Mac Studio in March without replacement.
+7. Normal configurations are also now affected.
+8. A 32 GB Mac mini M4 is temporarily unavailable.
+9. The Mac mini M4 is also unavailable in most retail stores.
+10. A 64 GB Mac mini M4 Pro is also unavailable.
+11. A 128 GB Mac Studio M4 Max variant is unavailable.
+12. Apple gives no information about when availability will improve.
+13. The Mac mini M4 was released in November 2024.
+14. The Mac Studio M4 Max and M3 Ultra were released in March 2025.
 
-Total claims extracted: 15
+Total claims extracted: 14
 
 Source reference:
 Schwan, B. (2026) 'Mac mini and Mac Studio: Apple cannot deliver certain RAM configurations', heise online, 13 April. Available at: https://www.heise.de/en/news/Mac-mini-and-Mac-Studio-Apple-cannot-deliver-certain-RAM-configurations-11254312.html (Accessed: 16 April 2026).

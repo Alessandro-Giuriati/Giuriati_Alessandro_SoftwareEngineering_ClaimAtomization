@@ -1,0 +1,18 @@
+Extracted claims:
+
+1. Microsoft and Meta are planning significant workforce cuts as spending on artificial intelligence increases.
+2. Meta said it was laying off about 8,000 workers, or about 10% of its workforce.
+3. Meta said the layoffs were intended to make efficiency savings as it ramps up investment.
+4. Meta said around 6,000 job vacancies would be left unfilled.
+5. Meta had previously told investors that spending would top $160 billion during 2026.
+6. Meta said that figure was up from just under $120 billion last year.
+7. Microsoft said it was offering a voluntary redundancy programme.
+8. The AP reported that the programme would affect about 8,750 people within Microsoft’s core US workforce.
+9. That number equals 7% of Microsoft’s total staff.
+10. CNBC reported that the voluntary scheme was due to be rolled out early next month.
+11. CNBC said staff were alerted to the scheme in a memo from Microsoft chief people officer Amy Coleman.
+
+Total claims extracted: 11
+
+Source reference:
+Sky News (2026) 'Microsoft and Meta to cut thousands of jobs', Sky News, 24 April. Available at: https://news.sky.com/story/microsoft-and-meta-to-cut-thousands-of-jobs-13535717 (Accessed: 27 April 2026).

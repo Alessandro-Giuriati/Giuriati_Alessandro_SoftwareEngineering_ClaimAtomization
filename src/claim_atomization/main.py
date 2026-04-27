@@ -8,8 +8,7 @@ Usage:
 
 import sys
 from pathlib import Path
-import sys
-from pathlib import Path
+
 
 from claim_atomization.article_selector import (
     list_article_files,
@@ -24,11 +23,17 @@ from claim_atomization.metadata_handler import (
     build_metadata_path,
     load_metadata_text,
 )
+from claim_atomization.claim_evaluator import (
+    build_manual_claims_path,
+    evaluate_claims,
+    format_evaluation_summary,
+    load_manual_claims,
+)
 
 DEFAULT_ARTICLES_DIR = "data/articles"
 
 
-def process_article(article_path: str) -> tuple[int, str]:
+def process_article(article_path: str) -> tuple[int, str, str | None]:
     """
     Run the full claim atomization pipeline for a single article.
 
@@ -36,6 +41,7 @@ def process_article(article_path: str) -> tuple[int, str]:
         A tuple containing:
         - the total number of extracted claims
         - the saved output path
+        - an optional manual evaluation summary
     """
     article_text = load_article_text(article_path)
     cleaned_text = preprocess_text(article_text)
@@ -52,10 +58,22 @@ def process_article(article_path: str) -> tuple[int, str]:
     output_path = build_output_path(article_path)
     save_claims_to_txt(claims, output_path, source_reference=source_reference)
 
-    return len(claims), output_path
+    evaluation_summary = None
+    manual_claims_path = build_manual_claims_path(article_path)
 
+    if Path(manual_claims_path).exists():
+        manual_claims = load_manual_claims(manual_claims_path)
+        evaluation = evaluate_claims(claims, manual_claims)
+        evaluation_summary = format_evaluation_summary(evaluation)
 
-def print_article_summary(article_path: str, claim_count: int, output_path: str) -> None:
+    return len(claims), output_path, evaluation_summary
+
+def print_article_summary(
+    article_path: str,
+    claim_count: int,
+    output_path: str,
+    evaluation_summary: str | None = None,
+) -> None:
     """
     Print a compact terminal summary for a processed article.
     """
@@ -63,6 +81,11 @@ def print_article_summary(article_path: str, claim_count: int, output_path: str)
     print(f"Total claims extracted: {claim_count}\n")
     print(f"Claims saved to: {output_path}\n")
 
+    if evaluation_summary:
+        print(evaluation_summary)
+        print()
+    else:
+        print("No manual claims file found. Skipping quality evaluation.\n")
 
 def print_article_error(article_path: str, error_message: str) -> None:
     """
@@ -116,8 +139,13 @@ def main() -> None:
 
     for article_path in selected_article_paths:
         try:
-            claim_count, output_path = process_article(article_path)
-            print_article_summary(article_path, claim_count, output_path)
+            claim_count, output_path, evaluation_summary = process_article(article_path)
+            print_article_summary(
+                article_path,
+                claim_count,
+                output_path,
+                evaluation_summary,
+            )
             success_count += 1
         except (FileNotFoundError, ValueError, RuntimeError) as exc:
             print_article_error(article_path, str(exc))
