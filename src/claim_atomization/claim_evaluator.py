@@ -9,22 +9,24 @@ def build_manual_claims_path(
 ) -> str:
     """
     Build the expected manual claims file path for a given article.
-
-    Example:
-    data/articles/example_article.txt
-    -> data/manual_claims/example_article_manual_claims.txt
     """
     article = Path(article_path)
     manual_filename = f"{article.stem}_manual_claims.txt"
+
     return str(Path(manual_claims_dir) / manual_filename)
 
 
 def load_manual_claims(manual_claims_path: str) -> list[str]:
     """
-    Load manual gold-standard claims from a text file.
+    Load manual claims from a text file.
 
     The file may contain plain lines, numbered claims, or bullet points.
     Empty lines are ignored.
+
+    Raises:
+        FileNotFoundError: If the manual claims file does not exist.
+        ValueError: If the path is not a file, the file is empty,
+                    or no valid claims are found.
     """
     path = Path(manual_claims_path)
 
@@ -67,25 +69,114 @@ def normalize_claim(claim: str) -> str:
     normalized = claim.lower()
     normalized = re.sub(r"[^\w\s]", "", normalized)
     normalized = re.sub(r"\s+", " ", normalized).strip()
+
     return normalized
+
+
+def extract_numbers(claim: str) -> set[str]:
+    """
+    Extract numeric values from a claim.
+    """
+    return set(re.findall(r"\b\d+(?:\.\d+)?\b", claim))
+
+
+def token_overlap_score(claim_a: str, claim_b: str) -> float:
+    """
+    Compute overlap between meaningful words in two claims.
+    """
+    stopwords = {
+        "the",
+        "a",
+        "an",
+        "of",
+        "and",
+        "or",
+        "to",
+        "in",
+        "for",
+        "with",
+        "as",
+        "is",
+        "are",
+        "was",
+        "were",
+        "be",
+        "been",
+        "being",
+        "by",
+        "at",
+        "from",
+        "on",
+        "it",
+        "its",
+        "this",
+        "that",
+        "these",
+        "those",
+        "when",
+        "currently",
+        "usually",
+        "than",
+        "has",
+        "have",
+        "had",
+        "not",
+        "no",
+        "also",
+        "some",
+        "about",
+        "into",
+        "their",
+    }
+
+    tokens_a = {
+        token
+        for token in normalize_claim(claim_a).split()
+        if token not in stopwords
+    }
+    tokens_b = {
+        token
+        for token in normalize_claim(claim_b).split()
+        if token not in stopwords
+    }
+
+    if not tokens_a or not tokens_b:
+        return 0.0
+
+    common_tokens = tokens_a.intersection(tokens_b)
+    smaller_claim_size = min(len(tokens_a), len(tokens_b))
+
+    return len(common_tokens) / smaller_claim_size
 
 
 def similarity_score(claim_a: str, claim_b: str) -> float:
     """
-    Compute a fuzzy similarity score between two claims.
+    Compute a similarity score between two claims.
+
+    The score combines sequence similarity and token overlap.
     """
+    numbers_a = extract_numbers(claim_a)
+    numbers_b = extract_numbers(claim_b)
+
+    if numbers_a and numbers_b and numbers_a.isdisjoint(numbers_b):
+        return 0.0
+
     normalized_a = normalize_claim(claim_a)
     normalized_b = normalize_claim(claim_b)
-    return SequenceMatcher(None, normalized_a, normalized_b).ratio()
+
+    sequence_score = SequenceMatcher(None, normalized_a, normalized_b).ratio()
+    overlap_score = token_overlap_score(claim_a, claim_b)
+
+    return max(sequence_score, overlap_score)
 
 
 def evaluate_claims(
     model_claims: list[str],
     manual_claims: list[str],
-    match_threshold: float = 0.75,
+    match_threshold: float = 0.55,
 ) -> dict:
     """
-    Compare model-generated claims against manual gold-standard claims.
+    Compare model-generated claims against manual claims.
 
     Returns a dictionary containing:
     - total model claims
@@ -95,6 +186,7 @@ def evaluate_claims(
     - coverage
     - extra model claims
     - missing manual claims
+    - matched pairs
     """
     matched_pairs = []
     used_manual_indexes = set()
@@ -124,7 +216,6 @@ def evaluate_claims(
             used_manual_indexes.add(best_match_index)
 
     matched_model_claims = {pair["model_claim"] for pair in matched_pairs}
-    matched_manual_indexes = used_manual_indexes
 
     extra_model_claims = [
         claim for claim in model_claims if claim not in matched_model_claims
@@ -133,7 +224,7 @@ def evaluate_claims(
     missing_manual_claims = [
         claim
         for index, claim in enumerate(manual_claims)
-        if index not in matched_manual_indexes
+        if index not in used_manual_indexes
     ]
 
     total_model_claims = len(model_claims)
