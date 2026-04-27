@@ -1,6 +1,6 @@
+import re
 from datetime import date
 from pathlib import Path
-import re
 
 
 def build_metadata_path(article_path: str) -> str:
@@ -82,7 +82,11 @@ def extract_year(raw_value: str | None) -> str:
     return "n.d."
 
 
-def build_harvard_reference(metadata_text: str, article_path: str, access_date: date | None = None,) -> str:
+def build_harvard_reference(
+    metadata_text: str,
+    article_path: str,
+    access_date: date | None = None,
+) -> str:
     """
     Build a Harvard-style source reference from metadata.
 
@@ -126,8 +130,4 @@ def build_harvard_reference(metadata_text: str, article_path: str, access_date: 
             f"(Accessed: {formatted_access_date})."
         )
 
-    return (
-        f"{title} ({year}) "
-        f"Available at: {url} "
-        f"(Accessed: {formatted_access_date})."
-    )
+    return f"{title} ({year}) Available at: {url} (Accessed: {formatted_access_date})."

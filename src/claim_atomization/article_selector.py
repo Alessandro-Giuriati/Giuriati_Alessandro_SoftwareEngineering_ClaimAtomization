@@ -77,10 +77,7 @@ def parse_article_selection(selection: str, article_paths: list[str]) -> list[st
         str(index): article_path
         for index, article_path in enumerate(article_paths, start=1)
     }
-    name_map = {
-        Path(article_path).name: article_path
-        for article_path in article_paths
-    }
+    name_map = {Path(article_path).name: article_path for article_path in article_paths}
 
     selected_paths: list[str] = []
     seen_paths: set[str] = set()

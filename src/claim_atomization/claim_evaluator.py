@@ -1,6 +1,6 @@
+import re
 from difflib import SequenceMatcher
 from pathlib import Path
-import re
 
 
 def build_manual_claims_path(
@@ -34,7 +34,9 @@ def load_manual_claims(manual_claims_path: str) -> list[str]:
         raise FileNotFoundError(f"Manual claims file not found: {manual_claims_path}")
 
     if not path.is_file():
-        raise ValueError(f"Expected a manual claims file, but got: {manual_claims_path}")
+        raise ValueError(
+            f"Expected a manual claims file, but got: {manual_claims_path}"
+        )
 
     raw_text = path.read_text(encoding="utf-8").strip()
 
@@ -130,14 +132,10 @@ def token_overlap_score(claim_a: str, claim_b: str) -> float:
     }
 
     tokens_a = {
-        token
-        for token in normalize_claim(claim_a).split()
-        if token not in stopwords
+        token for token in normalize_claim(claim_a).split() if token not in stopwords
     }
     tokens_b = {
-        token
-        for token in normalize_claim(claim_b).split()
-        if token not in stopwords
+        token for token in normalize_claim(claim_b).split() if token not in stopwords
     }
 
     if not tokens_a or not tokens_b:
@@ -232,15 +230,11 @@ def evaluate_claims(
     total_matched_claims = len(matched_pairs)
 
     precision = (
-        total_matched_claims / total_model_claims
-        if total_model_claims > 0
-        else 0.0
+        total_matched_claims / total_model_claims if total_model_claims > 0 else 0.0
     )
 
     coverage = (
-        total_matched_claims / total_manual_claims
-        if total_manual_claims > 0
-        else 0.0
+        total_matched_claims / total_manual_claims if total_manual_claims > 0 else 0.0
     )
 
     return {

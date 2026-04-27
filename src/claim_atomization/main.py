@@ -9,19 +9,9 @@ Usage:
 import sys
 from pathlib import Path
 
-
 from claim_atomization.article_selector import (
     list_article_files,
     parse_article_selection,
-)
-from claim_atomization.input_handler import load_article_text
-from claim_atomization.text_preprocessor import preprocess_text
-from claim_atomization.claim_extractor import extract_claims
-from claim_atomization.output_handler import build_output_path, save_claims_to_txt
-from claim_atomization.metadata_handler import (
-    build_harvard_reference,
-    build_metadata_path,
-    load_metadata_text,
 )
 from claim_atomization.claim_evaluator import (
     build_manual_claims_path,
@@ -29,6 +19,15 @@ from claim_atomization.claim_evaluator import (
     format_evaluation_summary,
     load_manual_claims,
 )
+from claim_atomization.claim_extractor import extract_claims
+from claim_atomization.input_handler import load_article_text
+from claim_atomization.metadata_handler import (
+    build_harvard_reference,
+    build_metadata_path,
+    load_metadata_text,
+)
+from claim_atomization.output_handler import build_output_path, save_claims_to_txt
+from claim_atomization.text_preprocessor import preprocess_text
 
 DEFAULT_ARTICLES_DIR = "data/articles"
 
@@ -68,6 +67,7 @@ def process_article(article_path: str) -> tuple[int, str, str | None]:
 
     return len(claims), output_path, evaluation_summary
 
+
 def print_article_summary(
     article_path: str,
     claim_count: int,
@@ -86,6 +86,7 @@ def print_article_summary(
         print()
     else:
         print("No manual claims file found. Skipping quality evaluation.\n")
+
 
 def print_article_error(article_path: str, error_message: str) -> None:
     """

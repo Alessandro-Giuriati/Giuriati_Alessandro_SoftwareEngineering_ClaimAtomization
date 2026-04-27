@@ -113,9 +113,7 @@ def extract_claims(article_text: str) -> list[str]:
             ],
         )
     except Exception as exc:
-        raise RuntimeError(
-            f"OpenAI API request failed: {exc}"
-        ) from exc
+        raise RuntimeError(f"OpenAI API request failed: {exc}") from exc
 
     content = response.output_text
 

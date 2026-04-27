@@ -1,0 +1,11 @@
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+include = ["src/claim_atomization/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"src/claim_atomization/claim_extractor.py" = ["E501"]
